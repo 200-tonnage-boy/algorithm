@@ -18,7 +18,7 @@
  * @return {boolean}
  */
 // 解法1：快慢指针，时间复杂度：O(n) 空间O(1）
-// 快指针一次走两步，慢的一次一步，如果有环，套一圈就相遇，此时快指针跑了两圈，每圈N/2，所以时间复杂度为N；
+// 快指针一次走两步，慢的一次一步，如果有环，套一圈就相遇（错误，未必套一圈），此时快指针跑了两圈，每圈N/2，所以时间复杂度为N；
  var hasCycle = function(head) {
   if (head===null || head.next===null) return false
   let quick = head.next, slow = head

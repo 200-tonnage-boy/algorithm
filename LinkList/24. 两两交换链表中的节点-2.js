@@ -30,16 +30,46 @@
 
 // 解法2 循环
 var swapPairs2 = function(head) {
-  const newHead = new ListNode()
-  newHead.next = head
-  const tem = newHead
-  while(tem.next !==null && tem.next.next!==null) {
-    let Q = tem.next.next;
-    let S = tem.next
-    S.next =  Q.next
-    Q.next = S
-    tem = S
-  }
-  return newHead.next
+  if (head===null || head.next===null) return head
+    const newHead = new ListNode()
+    newHead.next = head
+    let tem = newHead
+    while (tem.next&&tem.next.next) {
+        const quick = tem.next.next
+        const slow = tem.next
+        tem.next = quick
+        slow.next = quick.next
+        quick.next = slow
+        tem = slow
+    }
+    return newHead.next
 };
 
+const test = {
+  val:1,
+  next:{
+    val:2,
+    next:{
+      val:3,
+      next:{
+        val:4,
+        next:null
+      }
+    }
+  }
+}
+
+var swapPairs3 = function(head) {
+  if (head===null || head.next===null) return head
+  const res = head.next;
+  let tem = head;
+  while(tem.next!==null&&tem.next.next!==null) {
+      const quick = tem.next.next
+      const slow = tem.next
+      slow.next = quick.next
+      quick.next = slow
+      tem = slow
+  }
+  return res
+};
+console.log(swapPairs3(test))
