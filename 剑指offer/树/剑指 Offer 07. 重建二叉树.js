@@ -22,8 +22,8 @@
   //【根坐右】
   // 【左根右】
   // 获取根，然后截取左右，递归
-  if(!preorder.length) return []
-  if(preorder.length === 1) return preorder[0]
+  if(!preorder.length) return null
+  if(preorder.length === 1) return  new TreeNode(preorder[0] )
   let root = preorder[0]
   let inRootIndex = inorder.indexOf(root)
   const inLeft = inorder.slice(0, inRootIndex);
