@@ -23,7 +23,7 @@ var preorderTraversal = function(root) {
   while(stack.length) {
       const tem = stack.pop()
       res.push(tem.val);
-      tem.right && stack.push(tem.right)
+      tem.right && stack.push(tem.right)// 注意这里是对递归的模拟，注意顺序，先进后出；
       tem.left && stack.push(tem.left);
   }
   return res
