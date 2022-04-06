@@ -55,8 +55,58 @@ const t = {
   }
 }
 
-console.log(isPalindrome(t))
+// console.log(isPalindrome(t))
 
 
 // 解法二，一次遍历放到数组里；
 // 都是o(n)的时间复杂度
+
+
+const t2 = {
+  val: 1,
+  next: {
+    val: 2,
+    next: {
+      val: 2,
+      next: {
+        val: 1,
+        next: null,
+      },
+    },
+  },
+};
+
+var isPalindrome2 = function(head) {
+  if(!head.next)return true
+  // 链表分两截
+ let fast = head;
+  let slow = head;
+  while (fast.next !== null && fast.next.next !== null) {
+      fast = fast.next.next;
+      slow = slow.next;
+  }
+  debugger
+  let halfEnd = slow, halfStart = slow.next
+  let nextStart = reverse2(halfStart);
+  while(head !== nextStart) {
+      if(head.val !== nextStart.val) {
+          return false
+      }
+      nextStart = nextStart.next
+      head = head.next
+  }
+  return true
+};
+
+function reverse2 (head) {
+  let pre = null;
+  let curr = head;
+  while(curr) {
+      const next = head.next
+      curr.next = pre
+      pre = curr
+      curr = next
+  }
+  return pre
+}
+isPalindrome2(t2)
