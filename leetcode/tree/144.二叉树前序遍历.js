@@ -28,3 +28,21 @@ var preorderTraversal = function(root) {
   }
   return res
 }
+
+/////////////////////
+var preorderTraversal2 = function(root) {
+  // 循环
+  if(!root) return [];
+  const res = []
+  const stack = [root]
+  while(stack.length) {
+      const item = stack.shift()
+      // 注意下面这种解法是不行的，这样类似队列，左右依次进队，但是前度遍历是深度优先，如果存在子树应该先看子树，
+      // 类似下面这种，会出现处理完左子树，左子树的子节点会排在右子树后面；
+      res.push(item.val)
+      item.left && stack.push(item.left)
+      item.right && stack.push(item.right)
+  }
+  return res
+};
+
