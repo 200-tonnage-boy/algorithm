@@ -33,3 +33,27 @@ var pathSum = function(root, targetSum) {
   return res
 
 };
+
+
+// 递归版本
+var pathSum = function(root, targetSum) {
+    if(!root) return [];
+    const res = [];
+    deepCheck(root,0, targetSum, [], res )
+    return res
+};
+
+const deepCheck = (node, sum, targetSum, road, res) => {
+    if(!node) return
+    if(!node.left && !node.right && (sum+node.val===targetSum)) {
+        let newRoad = [...road, node.val]
+        res.push(newRoad)
+        return 
+    }
+    if(node.left) {
+        deepCheck(node.left, sum+node.val, targetSum, [...road, node.val], res)
+    }
+    if(node.right) {
+        deepCheck(node.right, sum+node.val, targetSum, [...road, node.val], res)
+    }
+}
