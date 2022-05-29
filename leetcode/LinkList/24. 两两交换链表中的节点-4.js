@@ -35,7 +35,7 @@ var swapPairs2 = function(head) {
     newHead.next = head
     let tem = newHead
     while (tem.next&&tem.next.next) {
-        const quick = tem.next.next
+        const quick = tem.next.next// 核心是交换 slow quick 
         const slow = tem.next
         tem.next = quick
         slow.next = quick.next
@@ -60,16 +60,6 @@ const test = {
 }
 
 var swapPairs3 = function(head) {
-  if (head===null || head.next===null) return head
-  const res = head.next;
-  let tem = head;
-  while(tem.next!==null&&tem.next.next!==null) {
-      const quick = tem.next.next
-      const slow = tem.next
-      slow.next = quick.next
-      quick.next = slow
-      tem = slow
-  }
-  return res
+ 
 };
 console.log(swapPairs3(test))
