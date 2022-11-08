@@ -16,4 +16,5 @@ var lengthOfLongestSubstring = function(s) {
   }
   return maxRes
 };
-lengthOfLongestSubstring('abcabcbb')
+
+console.log(lengthOfLongestSubstring("pwwkew"))

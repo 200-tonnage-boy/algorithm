@@ -1,4 +1,4 @@
-//  广度优先搜索： 循环，用双队列，一个队列放值，一个放节点
+//  深度优先搜索： 循环，用双队列，一个队列放值，一个放节点
 var hasPathSum = function(root, targetSum) {
   if(!root) {
       return false
