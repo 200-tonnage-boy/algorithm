@@ -13,3 +13,8 @@ var twoSum = function(nums, target) {
   }
   return []
 };
+
+
+const a = [];
+a.push(...[1,1,3])
+console.log(a)
