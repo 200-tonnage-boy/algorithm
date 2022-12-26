@@ -20,3 +20,29 @@ var copyRandomList1 = function(head) {
   }
   return newHead.next
 };
+
+
+// 不借助额外空间，直接挂载到对应节点上，三次循环，时间换空间
+var copyRandomList = function(head) {
+  if (!head) return null;
+  let current = head;
+  while(current){
+      current.tem = new Node(current.val)
+      current = current.next;
+  }
+  current = head;
+  while(current) {
+      current.tem.next = current?.next?.tem || null
+      if(current.random){
+          current.tem.random = current.random.tem
+      }
+      current = current.next
+  }
+  current = head;
+   let newHead = current.tem;
+   while(current) {
+       delete current.tem
+       current = current.next
+   }
+  return newHead
+};

@@ -15,3 +15,28 @@ var addStrings = function(num1, num2) {
   }
   return res.join('')
 };
+
+
+
+var addStrings = function(num1, num2) {
+  if(!num1.length || !num2.length) return num1 + num2
+  let length1 = num1.length-1;
+  let length2 = num2.length-1;
+  let curry = 0;
+  let res = '';
+  while(length1>=0 || length2>=0) {
+      let number1 = Number(num1[length1]) || 0;
+      let number2 = Number(num2[length2]) || 0;
+      let sum = number1 + number2 + curry;
+      curry = sum >= 10 ? 1 : 0;
+      sum = sum >= 10 ? sum - 10 : sum;
+      res =  sum.toString() + res;
+      length1--;
+      length2--;
+  }
+  if(curry) {
+      res = '1' + res
+  }
+  return res
+};
+addStrings22("1", "9")
