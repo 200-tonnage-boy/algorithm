@@ -18,7 +18,7 @@ var climbStairs = function(n) {// 时间复杂度O(n),空间复杂度O(1)
 };
 
 // 解法二： 递归
-const climbStairs1=(n) => { // 时间复杂度：  ？？？
+const climbStairs1=(n) => { // 时间复杂度：  ？？？O(logn)
   if (n===1) return 1
   if (n===2) return 2
   return climbStairs1(n-1) + climbStairs1(n-2)

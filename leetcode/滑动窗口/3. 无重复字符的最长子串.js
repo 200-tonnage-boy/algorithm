@@ -22,3 +22,24 @@ while(right<s.length) {
 }
 return maxRes
 };
+
+
+// 优化方法，优化left左指针的挨个删除，直接跳跃到对应的位置，
+var lengthOfLongestSubstring2 = function (s) {
+  if (s.length < 2) return s.length;
+  let left = (right = 0);
+  let record = new Map();
+  let res = 0;
+  while (right < s.length) {
+    if (record.has(s[right])) {
+      left = Math.max(record.get(s[right]) + 1, left);// 通过这一行来使得map不用删除被left跳跃的部分
+    }
+    res = Math.max(res, right - left + 1);
+    record.set(s[right], right);
+
+    right++;
+  }
+  return res;
+};
+
+  lengthOfLongestSubstring2("tmmzuxt")

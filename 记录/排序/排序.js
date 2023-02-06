@@ -36,20 +36,34 @@
 // console.log(r);
 
 
-const QuickSort = (arr=[]) => {
-  if(arr.length <= 1) return arr;
-  const tagIndex = arr.length >> 2;
-  const tag = arr[tagIndex];
-  const left = [], right=[], mid = []
-  arr.forEach(item => {
-    if(item===tag) {
-      mid.push(item)
-    }else if(item < tag) {
-      left.push(item)
-    }else {
-      right.push(item)
-    }
-  })
-  return [...QuickSort([...left]), ...mid, ...QuickSort([...right])]
-}
+// const QuickSort = (arr=[]) => {
+//   if(arr.length <= 1) return arr;
+//   const tagIndex = arr.length >> 2;
+//   const tag = arr[tagIndex];
+//   const left = [], right=[], mid = []
+//   arr.forEach(item => {
+//     if(item===tag) {
+//       mid.push(item)
+//     }else if(item < tag) {
+//       left.push(item)
+//     }else {
+//       right.push(item)
+//     }
+//   })
+//   return [...QuickSort([...left]), ...mid, ...QuickSort([...right])]
+// }
 
+
+
+
+var sortArray = function (arr) {
+  if (arr.length <= 1) return arr;
+  for (let i = 1; i < arr.length; i++) {
+    let tag = i
+    while(tag>0 && arr[tag] < arr[tag-1]) {
+      [arr[tag], arr[tag-1]] = [arr[tag-1], arr[tag]]
+      tag--
+    }
+  }
+  return arr;
+};
